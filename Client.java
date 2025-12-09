@@ -100,6 +100,7 @@ private String decryptMessage(String line) throws GeneralSecurityException {
                     String message = consoleIn.readLine();
                     if (message.equals("/quit")) {
                         //broadcastMessage(nickname + " has disconnected.");
+                        out.println(message);
                         consoleIn.close();
                         shutdown();
                     } else {
