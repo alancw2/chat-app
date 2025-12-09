@@ -25,6 +25,7 @@ public class CryptoUtil {
     private static final SecureRandom rng = new SecureRandom();
     private static final String HKDF_INFO = "chat-app";
 
+    //creates key pair {public key, private key}
     public static KeyPair generateKeyPair() throws GeneralSecurityException {
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("X25519");
         kpg.initialize(new NamedParameterSpec("X25519"));
@@ -35,7 +36,7 @@ public class CryptoUtil {
     }
 
     public static PublicKey publicKeyFromBase64X25519(String b64) throws GeneralSecurityException {
-        byte[] decodedKey = Base64.getDecoder().decode(b64);
+        byte[] decodedKey = Base64.getDecoder().decode(b64); //decodes public key from b64
         KeyFactory kf = KeyFactory.getInstance("X25519");
         X509EncodedKeySpec spec = new X509EncodedKeySpec(decodedKey);
         return kf.generatePublic(spec);
